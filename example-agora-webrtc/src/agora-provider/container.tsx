@@ -20,6 +20,9 @@ export const Container: React.FC<{}> = ({children}) => {
     webClient.subscribe((state: IWebClientState) => {
       updateState(state);
     });
+    return () => {
+      webClient.unsubscribe();
+    }
   }, []);
 
   const value = state;
